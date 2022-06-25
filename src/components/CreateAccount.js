@@ -8,12 +8,13 @@ export default function CreateAccount() {
   const [name, setName]         = React.useState("");
   const [email, setEmail]       = React.useState("");
   const [password, setPassword] = React.useState("");
-  //const ctx = React.useContext(UserContext);
+  // const ctx = React.useContext(UserContext);
 
-  function validate(field, lable){
+  function validate(field){
     if(!field){
-      setStatus("Error: " + lable);
-      setTimeout(() => setStatus(""), 3000);
+      setStatus("Error!");
+      console.log(`status is ${status}`)
+      // setTimeout(() => setStatus(""), 3000);
       return false;
     }
     return true;
@@ -21,14 +22,13 @@ export default function CreateAccount() {
 
   function handleCreate(){
     console.log(name, email, password);
-    if (!validate(name, "name")) return;
-    if (!validate(email, "email")) return;
-    if (!validate(password, "password")) return;
-    //ctx.users.push({name, email, password, balance: 200});
+    if (!validate(name)) return;
+    // if (!validate(email, "email")) return;
+    // if (!validate(password, "password")) return;
+    // ctx.users.push({name, email, password, balance: 200});
     setShow(false);
-    setTimeout(() => alert(`Your account is successfully created!`), 3000);
-
-  }
+    alert(`Your account is successfully created!`);
+ }
   
   function clearForm(){
     setName("");
@@ -41,26 +41,26 @@ export default function CreateAccount() {
   return (
     <Card style={{ width: '35rem' }}>
       <Card.Header>CREATE ACCOUNT</Card.Header>
-      <Card.Body>
-        <Card.Text>
+      {show ? 
+        (<Card.Body>
           <Form>
           <Form.Group className="mb-3" controlId="name">
             <Form.Label>Name</Form.Label>
-            <Form.Control type="text" value={name} placeholder="Name" onChange={e => setName(e.currentTarget.value)}/>
+            <Form.Control type="text" placeholder="Name" value={name} onChange={e => setName(e.target.value)} />
           </Form.Group>
           <Form.Group className="mb-3" controlId="email">
             <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Email" />
+            <Form.Control type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="password">
+          <Form.Group className="mb-3" controlId="form-password">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
+            <Form.Control type="password" laceholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
           </Form.Group>
           </Form>
-        </Card.Text>
-        <Button variant="primary" onClick={handleCreate}>Create Account</Button>
-      </Card.Body>
+          <Button variant="success" onClick={handleCreate}>Create Account</Button>
+        </Card.Body>) : 
+        (<Button variant="primary" onClick={clearForm}>Create Another Account</Button>)
+        }
     </Card>
   )
-  
 };
