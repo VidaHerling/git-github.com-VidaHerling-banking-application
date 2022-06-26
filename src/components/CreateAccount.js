@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Button, Form } from "react-bootstrap";
-
+import {userContext} from './userContext';
 
 export default function CreateAccount() {
   const [show, setShow]         = React.useState(true);
@@ -8,35 +8,28 @@ export default function CreateAccount() {
   const [name, setName]         = React.useState("");
   const [email, setEmail]       = React.useState("");
   const [password, setPassword] = React.useState("");
-  // const ctx = React.useContext(UserContext);
+  let users = React.useContext(userContext);
 
-  function validate(field){
-    if(!field){
-      setStatus("Error!");
-      console.log(`status is ${status}`)
-      // setTimeout(() => setStatus(""), 3000);
-      return false;
-    }
-    return true;
-  }
-
-  function handleCreate(){
-    console.log(name, email, password);
-    if (!validate(name)) return;
-    // if (!validate(email, "email")) return;
-    // if (!validate(password, "password")) return;
-    // ctx.users.push({name, email, password, balance: 200});
+  const handleCreate = () => {
+    users.push({name, email, password});
     setShow(false);
     alert(`Your account is successfully created!`);
  }
   
-  function clearForm(){
+  const clearForm = () => {
     setName("");
     setEmail("");
     setPassword("");
     setShow(true);
   }
 
+  //the create account button is disabled if the form is imcomplete (password must be at least 8 characters long)
+  const buttonDisabled = () => {
+    if(!name || !email || password.length < 8) return true;
+    else return false;
+  }
+  console.log(password.length)
+  console.log(buttonDisabled())
 
   return (
     <Card style={{ width: '35rem' }}>
@@ -47,17 +40,21 @@ export default function CreateAccount() {
           <Form.Group className="mb-3" controlId="name">
             <Form.Label>Name</Form.Label>
             <Form.Control type="text" placeholder="Name" value={name} onChange={e => setName(e.target.value)} />
+            {/* {!name && <Form.Text>Please enter your full name.</Form.Text>} */}
           </Form.Group>
           <Form.Group className="mb-3" controlId="email">
             <Form.Label>Email address</Form.Label>
             <Form.Control type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
+            {/* {!email && <Form.Text>Please enter a valid email address.</Form.Text>} */}
           </Form.Group>
-          <Form.Group className="mb-3" controlId="form-password">
+          <Form.Group className="mb-3" controlId="password">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" laceholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+            <Form.Control type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)}/>
+            {/* {password.length < 8 && <Form.Text>Your password must be at least 8 characters long.</Form.Text>} */}
           </Form.Group>
           </Form>
-          <Button variant="success" onClick={handleCreate}>Create Account</Button>
+          <Button variant="success" onClick={handleCreate} disabled={buttonDisabled()}>Create Account</Button>
+          {status}
         </Card.Body>) : 
         (<Button variant="primary" onClick={clearForm}>Create Another Account</Button>)
         }
