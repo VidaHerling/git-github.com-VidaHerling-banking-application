@@ -12,16 +12,17 @@ import {
 } from "react-router-dom";
 
 export default function App() {
+
   return (
     <div>
         <Navbar/>
-        <Routes>
-          <Route path="/" exact element={<Home/>} />
-          <Route path="/CreateAccount" element={<CreateAccount/>} />
-          <Route path="/deposit" element={<Deposit/>} />
-          <Route path="/withdraw" element={<Withdraw/>} />
-          <Route path="/alldata" element={<AllData/>} />
-        </Routes>
+          <Routes>
+            <Route path="/" exact element={<Home/>} />
+            <Route path="/CreateAccount" element={<CreateAccount/>} />
+            <Route path="/deposit" element={<Deposit/>} />
+            <Route path="/withdraw" element={<Withdraw/>} />
+            <Route path="/alldata" element={<AllData/>} />
+          </Routes>
     </div>
   );
 };
