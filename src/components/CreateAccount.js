@@ -15,6 +15,8 @@ export default function CreateAccount() {
     setShow(false);
     alert(`Your account is successfully created!`);
  }
+
+ console.log(users);
   
   const clearForm = () => {
     setName("");
@@ -28,8 +30,6 @@ export default function CreateAccount() {
     if(!name || !email || password.length < 8) return true;
     else return false;
   }
-  console.log(password.length)
-  console.log(buttonDisabled())
 
   return (
     <Card style={{ width: '35rem' }}>
@@ -40,17 +40,14 @@ export default function CreateAccount() {
           <Form.Group className="mb-3" controlId="name">
             <Form.Label>Name</Form.Label>
             <Form.Control type="text" placeholder="Name" value={name} onChange={e => setName(e.target.value)} />
-            {/* {!name && <Form.Text>Please enter your full name.</Form.Text>} */}
           </Form.Group>
           <Form.Group className="mb-3" controlId="email">
             <Form.Label>Email address</Form.Label>
             <Form.Control type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
-            {/* {!email && <Form.Text>Please enter a valid email address.</Form.Text>} */}
           </Form.Group>
           <Form.Group className="mb-3" controlId="password">
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)}/>
-            {/* {password.length < 8 && <Form.Text>Your password must be at least 8 characters long.</Form.Text>} */}
           </Form.Group>
           </Form>
           <Button variant="success" onClick={handleCreate} disabled={buttonDisabled()}>Create Account</Button>
