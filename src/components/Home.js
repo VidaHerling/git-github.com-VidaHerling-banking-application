@@ -7,7 +7,7 @@ import {
 export default function Home() {
     return (
       <Card style={{ width: '35rem' }}>
-      <Card.Img variant="top" src={require("../images/bank_img.jpeg")} />
+      <Card.Img variant="top" src={require("../images/bank_img.jpeg")} alt="homepage image"/>
       <Card.Body>
         <Card.Title>Welcome to Steadfast Bank!</Card.Title>
         <Card.Text>
