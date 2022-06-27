@@ -18,13 +18,13 @@ export default function NavBar() {
 
   return (
     <>
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-primary bg-light">
       <img src={require("../images/heart_logo.png")} className="logo"/>
       <Link className="navbar-brand" to="/">Steadfast Bank</Link>
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
-          {services.map((service) => (
-            <li className="nav-item">
+          {services.map((service, index) => (
+            <li className="nav-item" key={index}>
               <OverlayTrigger
                 placement="bottom"
                 overlay={

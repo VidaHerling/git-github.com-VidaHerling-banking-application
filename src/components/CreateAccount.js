@@ -35,8 +35,6 @@ export default function CreateAccount() {
     setShow(false);
     alert(`Your account is successfully created!`);
  }
-
- console.log(users);
   
   const clearForm = () => {
     setName("");

@@ -7,7 +7,7 @@ export default function AllData() {
   return (
     <>
       <h1>All Account Data:</h1>
-      <Table striped bordered hover>
+      <Table striped bordered hover className="alldata-table">
         <thead>
           <tr>
             <th>#</th>
