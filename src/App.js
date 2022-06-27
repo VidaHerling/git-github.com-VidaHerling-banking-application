@@ -19,9 +19,9 @@ export default function App() {
           <Routes>
             <Route path="/" exact element={<Home/>} />
             <Route path="/CreateAccount" element={<CreateAccount/>} />
-            <Route path="/deposit" element={<Deposit/>} />
-            <Route path="/withdraw" element={<Withdraw/>} />
-            <Route path="/alldata" element={<AllData/>} />
+            <Route path="/Deposit" element={<Deposit/>} />
+            <Route path="/Withdraw" element={<Withdraw/>} />
+            <Route path="/AllData" element={<AllData/>} />
           </Routes>
     </div>
   );
