@@ -4,23 +4,14 @@ import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import "./components.css";
 
 export default function NavBar() {  
-  const [hover, setHover] = React.useState(false);
-
-  const onHover = () => {
-    setHover(true);
-  }
-
-  const onLeave = () => {
-    setHover(false);
-  }
-
   const services = ['Create Account', 'Deposit', 'Withdraw', 'All Data'];
 
   return (
     <>
     <nav className="navbar navbar-expand-lg navbar-primary bg-light">
-      <img src={require("../images/heart_logo.png")} className="logo"/>
+      <img src={require("../images/heart_logo.png")} className="logo" alt="heart logo"/>
       <Link className="navbar-brand" to="/">Steadfast Bank</Link>
+      <Link className="navbar-brand" to="/">Home</Link>
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
           {services.map((service, index) => (
@@ -32,7 +23,7 @@ export default function NavBar() {
                     {service}
                   </Tooltip>
                 }>
-                <Link className="nav-link" to={service.replace(/\s+/g, '')} onMouseEnter={onHover} onMouseLeave={onLeave}>
+                <Link className="nav-link" to={service.replace(/\s+/g, '')}>
                   {service}
                 </Link>
               </OverlayTrigger>
