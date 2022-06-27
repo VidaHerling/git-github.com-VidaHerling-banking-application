@@ -1,42 +1,34 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 import { Table } from "react-bootstrap";
 import {userContext} from "./userContext";
 
 export default function AllData() {
-  const user = React.useContext(userContext);
+  const users = React.useContext(userContext);
   return (
     <>
-    <h1>All Data:</h1>
-    {JSON.stringify(user)};
+      <h1>All Account Data:</h1>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Password</th>
+          </tr>
+        </thead>
+        {users.map((user, index) => {
+          return (
+            <tbody>
+              <tr key={index} borderless = {true} >
+                <td>{index + 1}</td>
+                <td>{user.name}</td>
+                <td>{user.email}</td>
+                <td>{user.password}</td>
+              </tr>
+            </tbody>
+          )
+        })}
+      </Table>
     </>
-    // <Table striped bordered hover>
-    //   <thead>
-    //     <tr>
-    //       <th>#</th>
-    //       <th>Name</th>
-    //       <th>Email</th>
-    //       <th>Password</th>
-    //     </tr>
-    //   </thead>
-    //   <tbody>
-    //     <tr>
-    //       <td>1</td>
-    //       <td>Mark</td>
-    //       <td>Otto</td>
-    //       <td>@mdo</td>
-    //     </tr>
-    //     <tr>
-    //       <td>2</td>
-    //       <td>Jacob</td>
-    //       <td>Thornton</td>
-    //       <td>@fat</td>
-    //     </tr>
-    //     <tr>
-    //       <td>3</td>
-    //       <td colSpan={2}>Larry the Bird</td>
-    //       <td>@twitter</td>
-    //     </tr>
-    //   </tbody>
-    // </Table>
   )
 };
