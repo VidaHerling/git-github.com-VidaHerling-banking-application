@@ -14,6 +14,7 @@ export default function AllData() {
             <th>Name</th>
             <th>Email</th>
             <th>Password</th>
+            <th>Balance</th>
           </tr>
         </thead>
         {users.map((user, index) => {
@@ -24,6 +25,7 @@ export default function AllData() {
                 <td>{user.name}</td>
                 <td>{user.email}</td>
                 <td>{user.password}</td>
+                <td>$ {user.balance}</td>
               </tr>
             </tbody>
           )
