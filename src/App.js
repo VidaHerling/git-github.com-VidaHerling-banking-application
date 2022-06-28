@@ -5,6 +5,7 @@ import CreateAccount from "./components/CreateAccount";
 import Deposit from "./components/Deposit";
 import Withdraw from "./components/Withdraw";
 import AllData from "./components/AllData";
+import Banking from "./components/Banking";
 import './App.css';
 import {
   Route,
@@ -22,6 +23,7 @@ export default function App() {
             <Route path="/Deposit" element={<Deposit/>} />
             <Route path="/Withdraw" element={<Withdraw/>} />
             <Route path="/AllData" element={<AllData/>} />
+            <Route path="/Banking" element={<Banking/>} />
           </Routes>
     </div>
   );

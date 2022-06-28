@@ -4,7 +4,7 @@ import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import "./components.css";
 
 export default function NavBar() {  
-  const services = ['Create Account', 'Deposit', 'Withdraw', 'All Data'];
+  const services = ['Create Account', 'Deposit', 'Withdraw', 'All Data', 'Banking'];
 
   return (
     <>
